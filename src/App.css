@@ -1,0 +1,115 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 64px;
+  //background-color: violet;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: lightGray;
+}
+
+.header span {
+  font-size: 96px;
+}
+
+.bio {
+  text-align: center;
+  color: lightGray;
+  margin-top: 16px;
+}
+
+.buttonContainer {
+  text-align: center;
+}
+
+.bananaContainer {
+  text-align: center;
+  color: lightGray;
+  margin-top: 16px;
+}
+
+.topThrowerContainer {
+  color: lightGray;
+  margin-top: 16px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: small;
+}
+
+.loadingContainer {
+  text-align: center;
+}
+
+svg{
+  width: 60px;
+  height: 60px;
+  margin: 0px;
+  display: inline-block;
+}
+
+.bananaWithMessage {
+  background-color: darkviolet;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid white;
+  color: lightGray;
+  margin-top: 16px;
+  margin-left: 16px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: x-small;
+}
+
+.waveButton {
+  cursor: pointer;
+  margin-top: 18px;
+  padding: 8px;
+  border: 0;
+  border-radius: 5px;
+  max-width: 30%;
+  width: 30%;
+  background-color: gray;
+  color: gold;
+  font-weight: bold;
+  display: inline;
+  vertical-align: bottom;
+}
+
+.waveButton:disabled {
+  cursor: default;
+  background-color: lightgray;
+  color: goldenrod;
+}
+
+.waveInput {
+  margin-top: 16px;
+  padding: 11px;
+  border: 0;
+  border-radius: 5px;
+  max-width: 60%;
+  width: 60%;
+  display: inline;
+  vertical-align: bottom;
+}
+
+.connectButton {
+  cursor: pointer;
+  margin-top: 16px;
+  padding: 8px;
+  border: 0;
+  border-radius: 5px;
+  width: 50%;
+  background-color: gray;
+  color: gold;
+  font-weight: bold;
+}
