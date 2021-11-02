@@ -265,13 +265,14 @@ const App = () => {
           Throw messaged-banana, pls?
         </div>
 
-          <div className={`${currentAccount ? '' : 'hiddenDiv'} buttonContainer`}>
-
+        {!currentAccount ? "":(
+          <div className="buttonContainer">
             <input className="waveInput" type="text" placeholder="Please leave a message with the banana" value={message} onChange={handleChange} onKeyPress={handleInputKeyPress} />
             <button disabled={!message ? true : (!mining ? false : true)} className="waveButton" onClick={!message ? undefined : (!mining ? wave : undefined)}>
               {!mining ? ('Throw') : ('Throwing a ')} <span role="img" aria-label="Banana Emoji" title="Banana">🍌</span>
             </button>
           </div>
+        )}
 
         {(currentAccount ? " " : (
           <div className="buttonContainer">
