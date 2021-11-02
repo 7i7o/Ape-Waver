@@ -106,41 +106,41 @@ const App = () => {
         return;
       } else {
         console.log("We have the ethereum object", ethereum);
+
+        /* We have the ethereum object, let's update the wave count */
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const wavePortalContract = new ethers.Contract(contractAddress, waveportal.abi, provider);
+
+        let countWaves = await wavePortalContract.getTotalWaves();
+        console.log("Retrieved total wave count: ", countWaves.toNumber());
+        setCount(countWaves.toNumber());
+
+        let topWaver = await wavePortalContract.getTopWaver();
+        console.log("Top Waver: ", topWaver.toString());
+        setTopWaver(topWaver.toString());
+
+        await getAllWaves();
       }
-
-      /*
-        Check to see if we're authorized to access the user's wallet
-       */
-      // const accounts = await ethereum.request({ method: 'eth_accounts' });
-
-      // if (accounts.length !== 0) {
-      //   const account = accounts[0];
-      //   console.log("Found an authorized account: ", account);
-      //   setCurrentAccount(account);
-
-        /* We have the account, let's update the wave count */
-      const provider = new ethers.providers.Web3Provider(ethereum);
-      // const signer = provider.getSigner();
-      const wavePortalContract = new ethers.Contract(contractAddress, waveportal.abi, provider);
-
-      let countWaves = await wavePortalContract.getTotalWaves();
-      console.log("Retrieved total wave count: ", countWaves.toNumber());
-      setCount(countWaves.toNumber());
-
-      let topWaver = await wavePortalContract.getTopWaver();
-      console.log("Top Waver: ", topWaver.toString());
-      setTopWaver(topWaver.toString());
-
-      await getAllWaves();
-
-      // } else {
-      //   console.log("No authorized account found");
-      // }
-
     } catch (error) {
       console.log(error);
     }
   }
+
+  const listenForWalletChange = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        ethereum.on("accountsChanged", (accounts) => {
+          if (accounts.length > 0) {
+            setCurrentAccount(accounts[0]);
+          } else {
+            setCurrentAccount("");
+          }
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
 
   async function requestAccount() {
     return await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -242,8 +242,12 @@ const App = () => {
   */
   useEffect(() => {
     checkIfWalletIsConnected();
+    listenForWalletChange();
   }, [])
 
+
+  useEffect(() => {
+  }, []);
 
   /*
    This is the actual page
@@ -277,7 +281,11 @@ const App = () => {
           </div>
         )}
 
-        {(currentAccount ? " " : (
+        {(currentAccount ? (
+            <div className="connectedWalletContainer">
+              {`Connected to: ${currentAccount}`}
+            </div>
+          ) : (
           <div className="buttonContainer">
             <button className="connectButton" onClick={connectWallet}>
               Connect Wallet
