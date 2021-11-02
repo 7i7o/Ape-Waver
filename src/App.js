@@ -8,7 +8,7 @@ const App = () => {
   /* 
     Just a state variable to store our user's public wallet
   */
-  // const [currentAccount, setCurrentAccount] = useState("");
+  const [currentAccount, setCurrentAccount] = useState("");
 
   let [count, setCount] = useState(0);
 
@@ -160,8 +160,8 @@ const App = () => {
 
       const accounts = await requestAccount();
 
-      // console.log("Connected: ", accounts[0]);
-      // setCurrentAccount(accounts[0]);
+      console.log("Connected: ", accounts[0]);
+      setCurrentAccount(accounts[0]);
 
     } catch (error) {
       console.log(error);
@@ -273,7 +273,7 @@ const App = () => {
             </button>
           </div>
 
-        {(window.ethereum ? " " : (
+        {(currentAccount ? " " : (
           <div className="buttonContainer">
             <button className="connectButton" onClick={connectWallet}>
               Connect Wallet
