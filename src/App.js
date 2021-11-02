@@ -265,7 +265,7 @@ const App = () => {
           Throw messaged-banana, pls?
         </div>
 
-          <div className="buttonContainer">
+          <div className={`${currentAccount ? '' : 'hiddenDiv'} buttonContainer`}>
 
             <input className="waveInput" type="text" placeholder="Please leave a message with the banana" value={message} onChange={handleChange} onKeyPress={handleInputKeyPress} />
             <button disabled={!message ? true : (!mining ? false : true)} className="waveButton" onClick={!message ? undefined : (!mining ? wave : undefined)}>
