@@ -117,3 +117,11 @@ svg{
   color: gold;
   font-weight: bold;
 }
+
+.connectedWalletContainer {
+  color: lightGray;
+  margin-top: 16px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: small;
+  text-align: center;
+}
