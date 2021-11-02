@@ -175,6 +175,9 @@ const App = () => {
           if (ethereum) {
               // window.alert(message);
               // return;
+
+              await connectWallet();
+
               const provider = new ethers.providers.Web3Provider(ethereum);
               const signer = provider.getSigner();
               const wavePortalContract = new ethers.Contract(contractAddress, waveportal.abi, signer);
