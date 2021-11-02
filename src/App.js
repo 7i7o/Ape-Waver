@@ -141,6 +141,7 @@ const App = () => {
     } catch (error) {
       console.log(error);
     }
+  }
 
   async function requestAccount() {
     return await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -351,4 +352,4 @@ const App = () => {
   );
 }
 
-export default App
+export default App;
